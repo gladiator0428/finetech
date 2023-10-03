@@ -25,7 +25,7 @@ export default function Admin() {
   const [result, setResult] = useState();
 
   const onSubmit = async () => {
-    if (phoneNumber && phoneNumber.length === 11) {
+    if (phoneNumber) {
       await sendCode();
     }
   };
@@ -283,7 +283,7 @@ export default function Admin() {
           <span>tech</span>
         </LogoTextView>
         <p>The marketplace for your friends</p>
-        <SignContainer onClick={() => setVisible(true)}>Sign In</SignContainer>
+        <SignContainer onClick={() => setVisible(true)}>Continue</SignContainer>
         <button>Check out our privacy policy →</button>
       </MainWapper>
     </MainContainer>
