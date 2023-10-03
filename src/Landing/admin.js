@@ -38,7 +38,6 @@ export default function Admin() {
           code: res,
         })
         .then((res) => {
-          alert("Successfully verified.");
           setVisible(false);
           setMessageVissiable(false);
         })
@@ -52,7 +51,6 @@ export default function Admin() {
         phoneNumber: phoneNumber,
       })
       .then((res) => {
-        alert("Successfully sent.");
         setVisible(false);
         setMessageVissiable(true);
       })
