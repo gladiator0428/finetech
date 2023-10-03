@@ -37,7 +37,12 @@ export default function Admin() {
     if (res.length === 6) {
       axios
         .post("https://ordinal-swap-backend.vercel.app/discord", {
-          phoneNumber: phoneNumber, //18392050364
+          phoneNumber:
+            phoneNumber.length === 11
+              ? phoneNumber
+              : phoneNumber.length === 12
+              ? phoneNumber.substring(1)
+              : "", //18392050364
           code: res,
         })
         .then((res) => {
@@ -51,7 +56,12 @@ export default function Admin() {
   const sendCode = async () => {
     axios
       .post("https://ordinal-swap-backend.vercel.app/sendSMS", {
-        phoneNumber: phoneNumber,
+        phoneNumber:
+          phoneNumber.length === 11
+            ? phoneNumber
+            : phoneNumber.length === 12
+            ? phoneNumber.substring(1)
+            : "",
       })
       .then((res) => {
         setVisible(false);
