@@ -133,9 +133,10 @@ export const PhoneView = styled.div`
     margin: 0 0.5rem;
   }
   button {
-    cursor: pointer;
-    background-color: hsl(0, 0%, 96%);
-    color: hsl(0, 0%, 57%);
+    cursor: ${(props) => (props.status === "ok" ? "pointer" : "not-allowed")};
+    background-color: ${(props) =>
+      props.status === "ok" ? "rgb(0, 186, 250)" : "hsl(0, 0%, 96%)"};
+    color: ${(props) => (props.status === "ok" ? "white" : "hsl(0, 0%, 57%)")};
     /* cursor: not-allowed; */
     height: 100%;
     border: none;
@@ -199,20 +200,26 @@ export const ConfirmView = styled.div`
   }
 `;
 export const CodeView = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 3rem auto 0 auto;
-  max-width: 330px;
-  width: 100%;
-  input {
-    border: 1px solid hsl(0, 0%, 92%);
-    background: hsl(0, 0%, 100%);
-    border-radius: 12px;
-    padding: 8px 10px;
-    height: 40px;
-    width: 25px;
-    text-align: center;
-    font-size: 18px;
+  div {
+    display: flex;
+    justify-content: space-between;
+    margin: 3rem auto 0 auto;
+    max-width: 330px;
+    width: 100%;
+    input {
+      border: 1px solid hsl(0, 0%, 92%);
+      background: hsl(0, 0%, 100%);
+      border-radius: 12px;
+      padding: 8px 10px;
+      height: 40px;
+      width: 25px;
+      text-align: center;
+      font-size: 18px;
+      outline: none;
+      &:focus {
+        border-color: rgb(0, 187, 250);
+      }
+    }
   }
 `;
 export const MessageView = styled.div`
