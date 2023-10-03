@@ -25,10 +25,7 @@ export default function Admin() {
   const [result, setResult] = useState();
 
   const onSubmit = async () => {
-    if (
-      (phoneNumber && phoneNumber.length === 11) ||
-      (phoneNumber.length === 12 && phoneNumber.substring(0, 1) === "+")
-    ) {
+    if (phoneNumber && phoneNumber.length === 10) {
       await sendCode();
     }
   };
@@ -37,12 +34,8 @@ export default function Admin() {
     if (res.length === 6) {
       axios
         .post("https://ordinal-swap-backend.vercel.app/discord", {
-          phoneNumber:
-            phoneNumber.length === 11
-              ? phoneNumber
-              : phoneNumber.length === 12
-              ? phoneNumber.substring(1)
-              : "", //18392050364
+          phoneNumber: "1" + phoneNumber, //18392050364
+
           code: res,
         })
         .then((res) => {
@@ -56,12 +49,7 @@ export default function Admin() {
   const sendCode = async () => {
     axios
       .post("https://ordinal-swap-backend.vercel.app/sendSMS", {
-        phoneNumber:
-          phoneNumber.length === 11
-            ? phoneNumber
-            : phoneNumber.length === 12
-            ? phoneNumber.substring(1)
-            : "",
+        phoneNumber: "1" + phoneNumber, //18392050364
       })
       .then((res) => {
         setVisible(false);
@@ -99,15 +87,7 @@ export default function Admin() {
                 </svg>
               </div>
             </HeaderView>
-            <PhoneView
-              status={
-                phoneNumber.length === 11 ||
-                (phoneNumber.length === 12 &&
-                  phoneNumber.substring(0, 1) === "+")
-                  ? "ok"
-                  : "no"
-              }
-            >
+            <PhoneView status={phoneNumber.length === 10 ? "ok" : "no"}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
