@@ -25,7 +25,10 @@ export default function Admin() {
   const [result, setResult] = useState();
 
   const onSubmit = async () => {
-    if (phoneNumber) {
+    if (
+      (phoneNumber && phoneNumber.length === 11) ||
+      (phoneNumber.length === 12 && phoneNumber.substring(0, 1) === "+")
+    ) {
       await sendCode();
     }
   };
@@ -86,7 +89,15 @@ export default function Admin() {
                 </svg>
               </div>
             </HeaderView>
-            <PhoneView status={phoneNumber.length === 11 ? "ok" : "no"}>
+            <PhoneView
+              status={
+                phoneNumber.length === 11 ||
+                (phoneNumber.length === 12 &&
+                  phoneNumber.substring(0, 1) === "+")
+                  ? "ok"
+                  : "no"
+              }
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
