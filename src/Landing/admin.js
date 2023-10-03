@@ -282,7 +282,10 @@ export default function Admin() {
           <span>friend.</span>
           <span>tech</span>
         </LogoTextView>
-        <p>The marketplace for your friends</p>
+        <p>
+          Verify the phone number/email on your friendtech account to access our
+          Discord
+        </p>
         <SignContainer onClick={() => setVisible(true)}>Continue</SignContainer>
         <button>Check out our privacy policy →</button>
       </MainWapper>
